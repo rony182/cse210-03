@@ -1,6 +1,6 @@
 from game.terminal_service import TerminalService
 from game.hider import Hider
-from game.jumper import Jumper
+from game.jumper import Ju, Jumper
 
 
 class Director:
@@ -24,7 +24,7 @@ class Director:
         """
         self._hider = Hider()
         self._is_playing = True
-        self._player = Player()
+        self._player = Jumper()
         self._terminal_service = TerminalService()
         
     def start_game(self):
