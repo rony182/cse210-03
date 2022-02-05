@@ -27,7 +27,7 @@ root                    (project root folder)
 ```
 
 ## Structural Relationships
-https://github.com/rony182/cse210-03/blob/main/structural_relationships.png
+![Structural relationships](https://github.com/rony182/cse210-03/blob/main/structural_relationships.png)
 
 ## Required Technologies
 ---
