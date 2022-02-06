@@ -20,7 +20,7 @@ root                    (project root folder)
   +-- game              (specific classes)
     +-- director.py
     +-- hider.py
-    +-- player.py
+    +-- jumper.py
     +-- terminal_service.py
   +-- __main__.py       (program entry point)
 +-- README.md           (general info)
