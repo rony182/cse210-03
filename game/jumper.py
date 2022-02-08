@@ -39,13 +39,38 @@ class Jumper:
         max_wrong_guess = 5
         wrong_guess = 0
         guess = ""
-        if guess not in self._letter and wrong_guess < 1 or wrong_guess == 0:
-            print(f"---\n / \n \ \n ----- \n")
-            print(f"\  / \n \ / \n   o \n / | \ \n /\ \n ")
+        if guess not in self._letter and wrong_guess == 0:
+            print(f" --- \n /___\ \n \   / \n \  / ")
+            print(f" o \n / | \ \n /\ \n ")
             print(f"^^^^^^")
             wrong_guess += 1    
-        elif 
-
+        elif guess not in self._letter and wrong_guess == 1:
+            print(f"     \n /___\ \n \   / \n \  / ")
+            print(f" o \n / | \ \n /\ \n ")
+            print(f"^^^^^^")
+            wrong_guess += 1
+        elif guess not in self._letter and wrong_guess == 2:
+            print(f"     \n       \n \   / \n \  / ")
+            print(f" o \n / | \ \n /\ \n ")
+            print(f"^^^^^^")
+            wrong_guess += 1
+        elif guess not in self._letter and wrong_guess == 3:
+            print(f"     \n       \n       \n \  / ")
+            print(f" o \n / | \ \n /\ \n ")
+            print(f"^^^^^^")
+            wrong_guess += 1
+        elif guess not in self._letter and wrong_guess == 4:
+            print(f"     \n       \n       \n      ")
+            print(f" o \n / | \ \n /\ \n ")
+            print(f"^^^^^^")
+            wrong_guess += 1
+        elif guess not in self._letter and wrong_guess == 5:
+            print(f"     \n       \n       \n      ")
+            print(f" x \n / | \ \n /\ \n ")
+            print(f"^^^^^^")
+            wrong_guess += 1
+        else:
+            print(f"Game over")     
 
 
     def has_lost(self):
