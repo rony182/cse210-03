@@ -1,5 +1,6 @@
 import random
 
+
 class Jumper:
     """The person looking for the Hider. 
     
@@ -17,9 +18,21 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        words = ["python", "anaconda", "snake", "cobra", "constrictor",  "miniconda"]
-        word = random.choice(words)
-        self._letter = list(word)
+        self._parachute = [" ▁▁▁▁▁ ",
+                           "╱▁▁▁▁▁╲",
+                           "╲     ╱",
+                           " ╲   ╱",
+                           "   0 ",
+                           "  ╱|╲",
+                           "  ╱ ╲",
+                           "",
+                           "^^^^^^^"]
+        self._wrong_guesses = 0
+        self._max_wrong_guesses = 5
+
+        # words = ["python", "anaconda", "snake", "cobra", "constrictor",  "miniconda"]
+        # word = random.choice(words)
+        # self._letter = list(word)
  
 
     def get_parachute(self):
@@ -28,7 +41,7 @@ class Jumper:
         Returns:
             List[str]: String representation of the Jumper's parachute.
         """
-        return self._letter
+        
         
     def update_parachute(self):    
         """Removes a line from the parachute.
