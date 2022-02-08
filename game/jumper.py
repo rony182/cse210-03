@@ -1,8 +1,6 @@
-import random
-
 
 class Jumper:
-    """The person looking for the Hider. 
+    """The person guessing for the hidden word. 
     
     The responsibility of a Jumper is to keep track of its parachute.
     
@@ -29,62 +27,20 @@ class Jumper:
                            "^^^^^^^"]
         self._wrong_guesses = 0
         self._max_wrong_guesses = 5
-
-        # words = ["python", "anaconda", "snake", "cobra", "constrictor",  "miniconda"]
-        # word = random.choice(words)
-        # self._letter = list(word)
- 
-
-    def get_parachute(self):
-        """Gets the current status of the parachute.
-        
-        Returns:
-            List[str]: String representation of the Jumper's parachute.
-        """
         
         
-    def update_parachute(self):    
+    def update_parachute(self, wrong_guess):    
         """Removes a line from the parachute.
 
         Args:
             self (Jumper): An instance of Jumper.
         """
-        max_wrong_guess = 5
-        wrong_guess = 0
-        guess = ""
-        if guess not in self._letter and wrong_guess == 0:
-            print(f" --- \n /___\ \n \   / \n \  / ")
-            print(f" o \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1    
-        elif guess not in self._letter and wrong_guess == 1:
-            print(f"     \n /___\ \n \   / \n \  / ")
-            print(f" o \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1
-        elif guess not in self._letter and wrong_guess == 2:
-            print(f"     \n       \n \   / \n \  / ")
-            print(f" o \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1
-        elif guess not in self._letter and wrong_guess == 3:
-            print(f"     \n       \n       \n \  / ")
-            print(f" o \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1
-        elif guess not in self._letter and wrong_guess == 4:
-            print(f"     \n       \n       \n      ")
-            print(f" o \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1
-        elif guess not in self._letter and wrong_guess == 5:
-            print(f"     \n       \n       \n      ")
-            print(f" x \n / | \ \n /\ \n ")
-            print(f"^^^^^^")
-            wrong_guess += 1
-        else:
-            print(f"Game over")     
-
+        self._wrong_guesses = wrong_guess
+        if self._wrong_guesses < self._max_wrong_guesses:
+            self._parachute.pop(0)
+        elif self._wrong_guesses == self._max_wrong_guesses:
+            self._parachute[0].replace("   0 ", "   x ")
+        
 
     def has_lost(self):
         """Checks whether the Jumper lost the game.
@@ -95,4 +51,5 @@ class Jumper:
         Return:
             boolean: true if the Jumper lost.
         """
-        pass
+        if self._wrong_guesses == self._max_wrong_guesses:
+            return True
