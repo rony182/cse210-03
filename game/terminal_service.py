@@ -33,4 +33,5 @@ class TerminalService:
             self (TerminalService): An instance of TerminalService.
             text (List[str]): The parachute to display.
         """
-        print(parachute)
+        for i in range(len(parachute)):
+            print(f"{parachute[i]}")
