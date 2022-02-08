@@ -1,6 +1,6 @@
 from game.terminal_service import TerminalService
 from game.hider import Hider
-from game.jumper import Ju, Jumper
+from game.jumper import Jumper
 
 
 class Director:
