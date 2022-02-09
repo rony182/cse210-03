@@ -27,6 +27,7 @@ class Director:
         self._is_playing = True
         self._player = Jumper()
         self._terminal_service = TerminalService()
+        self._final_message=''
         
     def start_game(self):
         """Starts the game by setting a hidden word and running the main game loop.
@@ -58,7 +59,11 @@ class Director:
         self._hider.check_guess(self._new_letter)
         self._hider.add_chosen_letter(self._new_letter)
         self._player.update_parachute(self._hider.get_num_wrong_guesses())
-        if self._hider.is_found() or self._player.has_lost():
+        if self._hider.is_found():
+            self._final_message='Congrats, you have won!'
+            self._is_playing = False
+        elif self._player.has_lost():
+            self._final_message='Game over, Thanks for playing'
             self._is_playing = False
         
         
@@ -73,4 +78,4 @@ class Director:
         self._terminal_service.display_parachute(self._player.get_parachute())
         self._terminal_service.write_text(f"Letters used: {self._hider.get_chosen_letters()}")
         if not self._is_playing:
-             self._terminal_service.write_text("Game over, thanks for playing. ")
+             self._terminal_service.write_text(self._final_message)
