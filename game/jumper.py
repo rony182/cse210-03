@@ -1,6 +1,6 @@
 
 class Jumper:
-    """The person guessing for the hidden word. 
+    """The person guessing the hidden word. 
     
     The responsibility of a Jumper is to keep track of its parachute.
     
@@ -35,6 +35,7 @@ class Jumper:
         Returns:
             List[str]: String representation of the Jumper's parachute.
         """
+
         return self._parachute
 
         
@@ -43,6 +44,7 @@ class Jumper:
 
         Args:
             self (Jumper): An instance of Jumper.
+            wrong_guess (int): Hider's counter that keeps track of the wrong guesses.
         """
         if wrong_guess == self._max_wrong_guesses:
             self._parachute[0] = "   x "
@@ -62,6 +64,7 @@ class Jumper:
         Return:
             boolean: true if the Jumper lost.
         """
+        
         return self._wrong_guesses == self._max_wrong_guesses
 
 
