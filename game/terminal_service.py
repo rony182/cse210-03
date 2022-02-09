@@ -17,6 +17,7 @@ class TerminalService:
         """
         return input(prompt)
         
+
     def write_text(self, text):
         """Displays the given text on the terminal. 
 
@@ -24,10 +25,11 @@ class TerminalService:
             self (TerminalService): An instance of TerminalService.
             text (string): The text to display.
         """
-        print(f"\n {text} \n")
+        print(f"\n{text}\n")
+
 
     def display_parachute(self, parachute):
-        """Displays the given parachute on the terminal. 
+        """Displays the given list (parachute) on the terminal. 
 
         Args: 
             self (TerminalService): An instance of TerminalService.
