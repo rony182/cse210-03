@@ -26,7 +26,7 @@ class Jumper:
                            "",
                            "^^^^^^^"]
         self._wrong_guesses = 0
-        self._max_wrong_guesses = 4
+        self._max_wrong_guesses = 5
 
 
     def get_parachute(self):
@@ -44,12 +44,14 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        self._wrong_guesses = wrong_guess
-        if self._wrong_guesses < self._max_wrong_guesses:
-            self._parachute.pop(0)
-        elif self._wrong_guesses == self._max_wrong_guesses:
-            self._parachute[0].replace("   0 ", "   x ")
+        if wrong_guess == self._max_wrong_guesses:
+            self._parachute[0] = "   x "
         
+        elif self._wrong_guesses != wrong_guess:
+            self._parachute.pop(0)
+        
+        self._wrong_guesses = wrong_guess
+    
 
     def has_lost(self):
         """Checks whether the Jumper lost the game.

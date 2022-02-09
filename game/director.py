@@ -70,6 +70,6 @@ class Director:
         """
         self._terminal_service.write_text(self._hider.get_guesses())
         self._terminal_service.display_parachute(self._player.get_parachute())
-        self._terminal_service.write_text(self._hider.get_chosen_letters())
+        self._terminal_service.write_text(f"Letters used: {self._hider.get_chosen_letters()}")
         if not self._is_playing:
              self._terminal_service.write_text("Game over, thanks for playing. ")

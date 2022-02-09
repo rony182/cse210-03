@@ -20,10 +20,10 @@ class Hider:
             self (Hider): An instance of Hider.
         """
         
-        self._words =['cheese']#, 'summer', 'holiday', 'computer', 'mother', 'father', 'carpet']
+        self._words =['cheese']
         self._secret_word=''
         self._guesses=''
-        self._chosen_letters=[]    # This should change for self._chosen_letters = [] otherwise [''] is not an empty list
+        self._chosen_letters=[]
         self._wrong_guesses = 0
 
     def choose_secret_word(self):
@@ -36,7 +36,6 @@ class Hider:
             str: String representation of the word chosen.
         """
         self._secret_word= random.choice(self._words)
-        # Initialize _guesses with as many _ as the _secret_word's length
         self._guesses = '_' * len(self._secret_word)
         return self._secret_word
         
@@ -51,12 +50,12 @@ class Hider:
         Return:
             str: String representation of guesses.
         """
-        
-        for i, c  in enumerate(self._secret_word):
-            # i is the index, c is the letter
+        aux = list(self._guesses)
+        for i, c in enumerate(self._secret_word):
             if letter == c:
-                # self._guesses[i] = c
-                self._guesses.replace(c, letter)
+                aux[i] = c
+        self._guesses = "".join(aux)
+
         if letter not in self._secret_word:
             self._wrong_guesses += 1
         
