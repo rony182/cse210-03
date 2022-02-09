@@ -24,7 +24,7 @@ class TerminalService:
             self (TerminalService): An instance of TerminalService.
             text (string): The text to display.
         """
-        print(text)
+        print(f"\n {text} \n")
 
     def display_parachute(self, parachute):
         """Displays the given parachute on the terminal. 

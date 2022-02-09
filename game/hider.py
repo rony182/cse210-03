@@ -20,11 +20,12 @@ class Hider:
             self (Hider): An instance of Hider.
         """
         
-        self._words =['cheese', 'summer', 'holiday', 'computer', 'mother', 'father', 'carpet']
+        self._words =['cheese']#, 'summer', 'holiday', 'computer', 'mother', 'father', 'carpet']
         self._secret_word=''
         self._guesses=''
         self._chosen_letters=[]    # This should change for self._chosen_letters = [] otherwise [''] is not an empty list
-        
+        self._wrong_guesses = 0
+
     def choose_secret_word(self):
         """Choose the secret word from the list of possible words.
 
@@ -50,12 +51,15 @@ class Hider:
         Return:
             str: String representation of guesses.
         """
+        
         for i, c  in enumerate(self._secret_word):
             # i is the index, c is the letter
             if letter == c:
-                self._guesses[i] = c
-            
-        return self._guesses
+                # self._guesses[i] = c
+                self._guesses.replace(c, letter)
+        if letter not in self._secret_word:
+            self._wrong_guesses += 1
+        
 
     def add_chosen_letter(self, letter):
         """Adds the player's chosen letter to the list
@@ -65,9 +69,13 @@ class Hider:
             letter (str): Letter that the player chose.
         """
         self._chosen_letters.append(letter)
+    
+    def get_chosen_letters(self):
+
         return self._chosen_letters
 
-    def is_found(self, secret_word, chosen_letters):
+
+    def is_found(self):
         """Checks if the secret word was found.
 
         Args:
@@ -76,4 +84,13 @@ class Hider:
         Return:
             boolean: true if is was found.
         """
-        pass
+        return self._secret_word == self._guesses
+
+    def get_num_wrong_guesses(self):
+
+        return self._wrong_guesses
+
+    def get_guesses(self):
+
+        return self._guesses    
+

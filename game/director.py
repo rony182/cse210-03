@@ -22,6 +22,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self._new_letter = ""
         self._hider = Hider()
         self._is_playing = True
         self._player = Jumper()
@@ -33,6 +34,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self._hider.choose_secret_word()
         while self._is_playing:
             self._get_inputs()
             self._do_updates()
@@ -44,20 +46,30 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self._new_letter = self._terminal_service.read_text("\nGuess a letter [a-z]: ")
         
+
     def _do_updates(self):
-        """Keeps watch on where the seeker is moving.
+        """Keeps watch on where the  is moving.
 
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self._hider.check_guess(self._new_letter)
+        self._hider.add_chosen_letter(self._new_letter)
+        self._player.update_parachute(self._hider.get_num_wrong_guesses())
+        if self._hider.is_found() or self._player.has_lost():
+            self._is_playing = False
+        
         
     def _do_outputs(self):
-        """Provides a hint for the seeker to use.
+        """Provides a hint for the to use.
 
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self._terminal_service.write_text(self._hider.get_guesses())
+        self._terminal_service.display_parachute(self._player.get_parachute())
+        self._terminal_service.write_text(self._hider.get_chosen_letters())
+        if not self._is_playing:
+             self._terminal_service.write_text("Game over, thanks for playing. ")

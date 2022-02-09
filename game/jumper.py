@@ -26,8 +26,17 @@ class Jumper:
                            "",
                            "^^^^^^^"]
         self._wrong_guesses = 0
-        self._max_wrong_guesses = 5
+        self._max_wrong_guesses = 4
+
+
+    def get_parachute(self):
+        """Gets the current status of the parachute.
         
+        Returns:
+            List[str]: String representation of the Jumper's parachute.
+        """
+        return self._parachute
+
         
     def update_parachute(self, wrong_guess):    
         """Removes a line from the parachute.
@@ -51,5 +60,10 @@ class Jumper:
         Return:
             boolean: true if the Jumper lost.
         """
-        if self._wrong_guesses == self._max_wrong_guesses:
-            return True
+        return self._wrong_guesses == self._max_wrong_guesses
+
+
+
+
+
+            
