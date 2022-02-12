@@ -14,6 +14,7 @@ class Director:
         is_playing (boolean): Whether or not to keep playing.
         seeker (Seeker): The game's seeker.
         terminal_service: For getting and displaying information on the terminal.
+        final_message (str): The string that contains the final message to the player.
     """
 
     def __init__(self):
